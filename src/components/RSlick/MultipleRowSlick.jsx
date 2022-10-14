@@ -67,7 +67,6 @@ const MultipleRowSlick = (props) => {
       <button
         type="button"
         className={` ${styleSlick[activeClassDC]} px-8 py-3 font-semibold rounded-full bg-gray-500  text-white mx-2`}
-
         onClick={() => {
           dispatch({
             type: SET_PHIM_DANG_CHIEU,

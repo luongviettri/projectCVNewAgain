@@ -1,159 +1,164 @@
-import { Button, CustomCard } from '@tsamantanis/react-glassmorphism'
-import React, { useEffect, useState } from 'react'
-import "../../assets/styles/circle.css"
-import { Radio, Space, Tabs, Rate } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
-import { layThongTinChiTietPhim } from '../../redux/actions/QuanLyRapAction';
-import moment from 'moment/moment';
-import { StarFilled } from '@ant-design/icons';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import "../../assets/styles/circle.css";
+import { Tabs, Rate, Progress } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { layThongTinChiTietPhim } from "../../redux/actions/QuanLyRapAction";
+import moment from "moment/moment";
+import { NavLink } from "react-router-dom";
+import ReactPlayer from "react-player";
 const { TabPane } = Tabs;
 export default function Detail(props) {
-    const { filmDetail } = useSelector(state => state.QuanLyPhimReducer);
+  const { filmDetail } = useSelector((state) => state.QuanLyPhimReducer);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const { id } = props.match.params;
+    dispatch(layThongTinChiTietPhim(id));
+  }, []);
 
-    const [tabPosition, setTabPosition] = useState('left');
-    const dispatch = useDispatch();
-    const changeTabPosition = (e) => {
-        setTabPosition(e.target.value);
-    };
-    useEffect(() => {
-        const { id } = props.match.params;
-        dispatch(layThongTinChiTietPhim(id))
-    }, [])
-
-    return (
-        <div style={{
-            backgroundImage: `url(${filmDetail.hinhAnh})`,
-            backgroundSize: "100%",
-            backgroundPosition: "center",
-            minHeight: "100vh"
-        }} >
-            <CustomCard
-                style={{
-                    paddingTop: 150,
-                    minHeight: "100vh"
-                }}
-                effectColor="#fff" // required
-                color="rgba(255,255,255,0.4)" // default color is white
-                blur={10} // default blur value is 10px
-                borderRadius={0} // default border radius value is 10px
-            >
-                <div className="grid grid-cols-12">
-                    <div className="col-span-5 col-start-3">
-                        <div className="grid grid-cols-3">
-                            <img
-                                className='col-span-1'
-                                src={filmDetail.hinhAnh}
-                                style={{
-                                    width: 250,
-                                    height: 300
-                                }}
-                                alt="123" />
-                            <div className='col-span-2 ml-5' style={{
-                                marginTop: "25%"
-                            }}  >
-                                <p className='text-sm' >Ngày chiếu: {moment(filmDetail.ngayKhoiChieu).format("DD.MM.YYYY")}</p>
-                                <p className='text-4xl mb-1' >{filmDetail.tenPhim}</p>
-                                <p>{filmDetail.moTa}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-span-4">
-                        <div className="flex  flex-col justify-center items-center ">
-                            <h1
-                                className='text-green-400 text-2xl'>
-                                <Rate style={{
-                                    color: "#78ed78",
-                                    fontSize: 30
-                                }} allowHalf
-                                    value={filmDetail.danhGia / 2}
-                                />
-                            </h1>
-                            <div className={`c100 p${filmDetail.danhGia * 10} big`}
-                                style={{
-                                    marginBottom: 0,
-                                    marginRight: 0
-                                }}
-                            >
-                                <span
-                                    className='cursor-pointer'
-                                    style={{
-                                        display: "block",
-                                        marginTop: "30%"
-                                    }}
-                                >{filmDetail.danhGia}</span>
-                                <div className="slice">
-                                    <div className="bar" />
-                                    <div className="fill" />
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div className="mt-20 ml-72 w-2/3 container bg-white px-5 py-5 ">
-
-                    <Tabs
-                        defaultActiveKey="1"
-                        centered
-                    >
-                        <TabPane tab="Lich chieu" key="1" style={{ minHeight: "300px" }} >
-                            <div>
-                                <Tabs
-                                    tabPosition={"left"}
-                                >
-                                    {filmDetail.heThongRapChieu?.map((htr, index) => {
-                                        console.log('htr: ', htr);
-                                        return (
-                                            <TabPane
-                                                tab={
-                                                    <div>
-                                                        <img src={htr.logo} alt="abc" className='rounded-full' width="50" />
-                                                    </div>} key={index}>
-                                                {htr.cumRapChieu?.map((cumRap, index) => {
-                                                    return (
-                                                        <div className='mt-5' key={index}>
-                                                            <div className="flex flex-row">
-                                                                <img src={cumRap.hinhAnh} alt="123" style={{ width: 60, height: 60 }} />
-                                                                <div className="ml-2">
-                                                                    <p style={{
-                                                                        fontSize: 20,
-                                                                        fontWeight: "bold",
-                                                                        lineHeight: 1
-                                                                    }} >{cumRap.tenCumRap}</p>
-                                                                    <p className='text-gray-400' style={{ marginTop: 0 }}>{cumRap.diaChi}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div className="thong-tin-lich-chieu grid grid-cols-4">
-                                                                {cumRap.lichChieuPhim?.slice(0, 12).map((lichChieu, index) => {
-                                                                    return (
-                                                                        <NavLink to={`/checkout/${lichChieu.maLichChieu}`} key={index} className="col-span-1 text-green-800
-                                                                        font-bold" >
-                                                                            {moment(lichChieu.ngayChieuGioChieu).format("hh:mm A")}
-                                                                        </NavLink>
-                                                                    )
-                                                                })}
-                                                            </div>
-                                                        </div>
-                                                    )
-                                                })}
-                                            </TabPane>
-
-                                        )
-                                    })}
-                                </Tabs>
-                            </div>
-                        </TabPane>
-                        <TabPane tab="Thong tin" key="2" style={{ minHeight: "250px" }} >
-                            Thong tin
-                        </TabPane>
-                        <TabPane tab="Danh gia" key="3" style={{ minHeight: "250px" }} >
-                            Danh gia
-                        </TabPane>
-
-                    </Tabs>
-                </div>
-            </CustomCard>
+  return (
+    <div
+      className="bg-black container pt-32 mx-auto"
+      style={{
+        // backgroundImage: `url(${filmDetail.hinhAnh})`,
+        backgroundSize: "100%",
+        backgroundPosition: "center",
+      }}
+    >
+      <div
+        className="flex flex-row w-4/5 mx-auto border-none rounded-md "
+        style={{ backgroundColor: " rgba(60, 60, 60, 0.4)" }}
+      >
+        <div className="m-5">
+          <div className="flex">
+            <img
+              className="border-none rounded-lg"
+              src={filmDetail.hinhAnh}
+              style={{
+                width: 300,
+                height: 400,
+              }}
+              alt="123"
+            />
+            <div className="ml-5 overflow-hidden">
+              <p className=" flex flex-col">
+                <h3 className="text-4xl font-bold text-red-700 uppercase">
+                  {filmDetail.tenPhim} {" - "}
+                  <span className="text-3xl italic font-semibold text-gray-400">
+                    {moment(filmDetail.ngayKhoiChieu).format("DD.MM.YYYY")}
+                  </span>
+                </h3>
+                <Rate allowHalf value={filmDetail.danhGia / 2} disabled />
+              </p>
+              <p className={`text-white text-md leading-6 tracking-wide`}>
+                {filmDetail.moTa}
+              </p>
+            </div>
+          </div>
         </div>
-    )
+        <div className="mx-10 mt-24">
+          <div className="flex gap-4 flex-col justify-center items-center cursor-pointer ">
+            <Progress
+              width={180}
+              type="circle"
+              percent={`${filmDetail.danhGia * 10}`}
+              strokeColor={"rgba(185, 28, 28,1)"}
+              format={(percent) => `${percent / 10} /10`}
+              status="exception"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="mt-20 w-4/5 mx-auto bg-black rounded-lg px-5 py-5 text-xl  hover:text-red-500"
+        style={{ backgroundColor: " rgba(60, 59, 59, 0.4)" }}
+      >
+        <Tabs defaultActiveKey="1" centered size="large">
+          <TabPane
+            className="flex align-middle items-center text-lg font-bold"
+            tab={
+              <p className="text-white text-2xl hover:text-red-700  capitalize tracking-wide">
+                Trailer
+              </p>
+            }
+            key="1"
+            style={{ minHeight: "300px", fontSize: "24px" }}
+          >
+            <ReactPlayer width={900} url={filmDetail.trailer} controls={true} />
+          </TabPane>
+          <TabPane
+            tab={
+              <p className="text-white text-2xl hover:text-red-700  capitalize tracking-wide">
+                Lịch Chiếu
+              </p>
+            }
+            key="2"
+            style={{ minHeight: "300px" }}
+          >
+            <div>
+              <Tabs tabPosition={"left"}>
+                {filmDetail.heThongRapChieu?.map((htr, index) => {
+                  console.log("htr: ", htr);
+                  return (
+                    <TabPane
+                      tab={
+                        <div>
+                          <img
+                            src={htr.logo}
+                            alt="abc"
+                            className="rounded-full"
+                            width="50"
+                          />
+                        </div>
+                      }
+                      key={index}
+                    >
+                      {htr.cumRapChieu?.map((cumRap, index) => {
+                        return (
+                          <div className="mt-5" key={index}>
+                            <div className="flex flex-row">
+                              <img
+                                src={cumRap.hinhAnh}
+                                alt="123"
+                                style={{ width: 100, height: 100 }}
+                              />
+                              <div className="ml-2">
+                                <p className="text-white font-bold text-2xl ">
+                                  {cumRap.tenCumRap}
+                                </p>
+                                <p className="text-gray-400 text-xl italic font-semibold mb-5">
+                                  {cumRap.diaChi}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="grid grid-cols-8 gap-4 my-5">
+                              {cumRap.lichChieuPhim
+                                ?.slice(0, 12)
+                                .map((lichChieu, index) => {
+                                  return (
+                                    <NavLink
+                                      to={`/checkout/${lichChieu.maLichChieu}`}
+                                      key={index}
+                                    >
+                                      <button className="col-span-1 text-red-700 text-green-80 font-bold border-2 rounded-lg border-red-700 bg-gray-200 hover:bg-white py-2 px-2">
+                                        {moment(
+                                          lichChieu.ngayChieuGioChieu
+                                        ).format("hh:mm A")}
+                                      </button>
+                                    </NavLink>
+                                  );
+                                })}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </TabPane>
+                  );
+                })}
+              </Tabs>
+            </div>
+          </TabPane>
+        </Tabs>
+      </div>
+    </div>
+  );
 }
