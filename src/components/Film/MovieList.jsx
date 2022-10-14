@@ -15,7 +15,6 @@ import { NextArrow } from "../../assets/icons/NextArrow";
 import { PrevArrow } from "../../assets/icons/PrevArrow";
 export default function MovieList(props) {
   const { data } = props;
-  console.log("data: ", data);
   const dispatch = useDispatch();
   const activeStyle = {
     fontSize: "2.25rem",

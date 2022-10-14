@@ -11,14 +11,14 @@ export default function Footer(props) {
   });
   return (
     <footer className="py-6 bg-coolGray-100 text-coolGray-900 bg-black">
-      <div className="container mx-auto space-y-6 my-2 divide-gray-400 md:space-y-12">
+      <div className="container mx-auto space-y-6 divide-gray-400 md:space-y-12">
         <div className="grid grid-cols-12">
           <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
             <div
               href="#"
               className="flex justify-center space-x-3 md:justify-start text-white"
             >
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-violet-600">
+              <div className="flex items-center justify-center w-1  rounded-full bg-violet-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 32 32"
