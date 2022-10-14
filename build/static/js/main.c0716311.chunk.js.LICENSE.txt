@@ -1,0 +1,27 @@
+//! chuyển hướng về trang chủ
+
+//! chỗ này set default language
+
+//! cài bước này cho nó ko warning nữa
+
+//! cấu hình real ( dùng websocket bằng SignalR)
+
+//! f5 web
+
+//! giới hạn dữ liệu là ảnh
+
+//! giới hạn==> nếu dữ liệu là ảnh
+
+//! logic: khi component render xong thì load tất cả ghế của người khác đang đặt về browser
+
+//! lấy dữ liệu về
+
+//! nhưng đối với dữ liệu dạng hình ảnh thì phải truyền 3ts
+
+//! nhưng đối với dữ liệu dạng hình ảnh thì phải truyền 3ts    
+
+//!Kết nối redux
+
+//!antd
+
+//!reactslick
