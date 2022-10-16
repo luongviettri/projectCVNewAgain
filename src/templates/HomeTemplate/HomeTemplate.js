@@ -22,7 +22,7 @@ export const HomeTemplate = (props) => {
         return (
           <Fragment>
             <Header {...propsRoute} />
-            <Component className="bg-black" {...propsRoute} />
+            <Component {...propsRoute} />
             <Footer />
           </Fragment>
         );

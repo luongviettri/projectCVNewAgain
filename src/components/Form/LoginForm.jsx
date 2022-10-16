@@ -30,7 +30,7 @@ export default function LoginForm() {
         </NavLink>
       </div>
       <div className="px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-4 xl:px-24 xl:max-w-2xl">
-        <h2 className=" text-center uppercase text-2xl text-red-700 font-bold lg:text-left xl:text-4xl">
+        <h2 className=" text-center uppercase text-2xl text-red-700 font-bold lg:text-left xl:text-4xl my-3">
           Đăng Nhập
         </h2>
         <div className="flex flex-col">

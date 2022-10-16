@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import HomeMenu from "./HomeMenu/HomeMenu";
-//!Kết nối redux
 import { useSelector, useDispatch } from "react-redux";
-import MultipleRowSlick from "../../components/RSlick/MultipleRowSlick";
 import { layDanhSachPhimAction } from "../../redux/actions/QuanLyPhimAction";
 import { layDanhSachHeThongRapAction } from "../../redux/actions/QuanLyRapAction";
 import HomeCarousel from "../../templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel";
