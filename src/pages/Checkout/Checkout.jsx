@@ -115,17 +115,19 @@ function Menu(props) {
               dispatch(datGheAction(ghe, id));
             }}
             disabled={ghe.daDat || classGheKhachDat !== ""}
-            className={`ghe ${classGheVip} ${classGheDaDat} ${classGheDangDat}  ${classGheDaDuocDat} ${classGheKhachDat} text-center `}
+            className={`ghe xl:w-9 xl:h-9  xl:m-2 lg:w-7 lg:h-7  lg:m-2  md:m-1 md:w-6 md:h-6 w-4 h-4 m-999  ${classGheVip} ${classGheDaDat} ${classGheDangDat}  ${classGheDaDuocDat} ${classGheKhachDat}  
+                text-xsss md:text-xs lg:text-base
+            `}
           >
             {/* //! nếu đã đặt thì so sánh xem mình đặt hay người khác đặt==> nếu người khác đặt thì xem coi là đang đặt hay đã đặt */}
             {ghe.daDat ? (
               classGheDaDat !== "" ? (
                 <UserOutlined
-                  style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                  style={{ fontWeight: "bold" }}
                 />
               ) : (
                 <CloseOutlined
-                  style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                  style={{ fontWeight: "bold" }}
                 />
               )
             ) : classGheKhachDat !== "" ? (
@@ -152,7 +154,7 @@ function Menu(props) {
   return (
     <div className=" h-screen ">
       <div className="grid grid-cols-12">
-        <div className="col-span-9">
+        <div className=" col-span-12 md:block md:col-span-9">
           <div className="flex flex-col items-center mt-5">
             <div
               className="bg-black"
@@ -170,55 +172,73 @@ function Menu(props) {
             <table className="divide-y divide-gray-200 w-2/3">
               <thead className="bg-gray-50 p-5">
                 <tr>
-                  <th>Ghế chưa đặt</th>
-                  <th>Ghế đang đặt</th>
-                  <th>Ghế vip đặt</th>
-                  <th>Ghế đã đặt</th>
-                  <th>Ghế mình đặt</th>
-                  <th>Ghế khách đặt</th>
+                  <th className="text-xsss md:text-xs lg:text-base ">
+                    Ghế chưa đặt
+                  </th>
+                  <th className="text-xsss md:text-xs lg:text-base ">
+                    Ghế đang đặt
+                  </th>
+                  <th className="text-xsss md:text-xs lg:text-base ">
+                    Ghế vip đặt
+                  </th>
+                  <th className="text-xsss md:text-xs lg:text-base ">
+                    Ghế đã đặt
+                  </th>
+                  <th className="text-xsss md:text-xs lg:text-base ">
+                    Ghế mình đặt
+                  </th>
+                  <th className="text-xsss md:text-xs lg:text-base ">
+                    Ghế khách đặt
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 <tr>
                   <td className="text-center">
-                    <button className="ghe  ">
+                    <button className="ghe  lg:w-9 lg:h-9 lg:m-2 md:m-1 md:w-6 md:h-6 w-6 h-6  m-999">
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        style={{ fontWeight: "bold" }}
+                        className=" lg:text-xl  text-xsss"
                       />
                     </button>
                   </td>
                   <td className="text-center">
-                    <button className="ghe gheDangDat  ">
+                    <button className="ghe gheDangDat  lg:w-9 lg:h-9 lg:m-2 md:m-1 md:w-6 md:h-6 w-6 h-6  m-999">
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        style={{ fontWeight: "bold" }}
+                        className=" lg:text-xl  text-xsss"
                       />
                     </button>
                   </td>
                   <td className="text-center">
-                    <button className="ghe gheVip  ">
+                    <button className="ghe gheVip  lg:w-9 lg:h-9 lg:m-2 md:m-1 md:w-6 md:h-6 w-6 h-6  m-999">
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        style={{ fontWeight: "bold" }}
+                        className=" lg:text-xl  text-xsss"
                       />
                     </button>
                   </td>
                   <td className="text-center">
-                    <button className="ghe gheDaDat  ">
+                    <button className="ghe gheDaDat  lg:w-9 lg:h-9 lg:m-2 md:m-1 md:w-6 md:h-6 w-6 h-6  m-999">
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        style={{ fontWeight: "bold" }}
+                        className=" lg:text-xl  text-xsss"
                       />
                     </button>
                   </td>
                   <td className="text-center">
-                    <button className="ghe gheDaDuocDat  ">
+                    <button className="ghe gheDaDuocDat lg:w-9 lg:h-9 lg:m-2 md:m-1 md:w-6 md:h-6 w-6 h-6  m-999">
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        style={{ fontWeight: "bold" }}
+                        className=" lg:text-xl  text-xsss"
                       />
                     </button>
                   </td>
                   <td className="text-center">
-                    <button className="ghe gheKhachDat gheDaDuocDat  ">
+                    <button className="ghe gheKhachDat gheDaDuocDat lg:w-9 lg:h-9 lg:m-2 md:m-1 md:w-6 md:h-6 w-6 h-6  m-999">
                       <CheckOutlined
-                        style={{ marginBottom: 7.5, fontWeight: "bold" }}
+                        className=" lg:text-xl  text-xsss"
+                        style={{ fontWeight: "bold" }}
                       />
                     </button>
                   </td>
@@ -227,10 +247,10 @@ function Menu(props) {
             </table>
           </div>
         </div>
-        <div className="col-span-3  h-screen">
-          <div className="flex flex-col justify-between h-full pt-5">
-            <div style={{ height: "92%" }}>
-              <h3 className="text-green-400 text-center text-2xl">
+        <div className=" col-span-3 hidden md:block  h-screen">
+          <div className=" md:flex-col h-full pt-5 md:flex   flex   ">
+            <div>
+              <h3 className="text-green-400 text-center text-2xl ">
                 {" "}
                 {danhSachGheDangDat
                   .reduce((tongTien, ghe, index) => {
@@ -240,15 +260,17 @@ function Menu(props) {
                 đ
               </h3>
               <hr />
-              <h3 className="text-xl">{thongTinPhim.tenPhim}</h3>
-              <p>Địa điểm: {thongTinPhim.diaChi}</p>
-              <p>
+              <h3 className="text-xl hidden md:block">
+                {thongTinPhim.tenPhim}
+              </h3>
+              <p className="hidden md:block">Địa điểm: {thongTinPhim.diaChi}</p>
+              <p className="hidden md:block">
                 Ngày chiếu: {thongTinPhim.ngayChieu} {thongTinPhim.gioChieu}
               </p>
               <hr />
-              <div className="flex flex-row my-5">
-                <div className="w-4/5">
-                  <span className="text-red-400 text-lg">Ghế</span>
+              <div className=" flex-row my-5 flex custom-scrollbar">
+                <div className="w-4/5 lg:w-3/5  overflow-x-auto ">
+                  <span className="text-red-400 text-lg font-bold">Ghế</span>
                   {_.sortBy(danhSachGheDangDat, ["stt"]).map((gheDD, index) => {
                     return (
                       <Fragment key={index}>
@@ -259,8 +281,8 @@ function Menu(props) {
                     );
                   })}
                 </div>
-                <div className="text-right col-span-1">
-                  <span className="text-green-800 text-lg">
+                <div className=" hidden lg:block lg:w-2/5 text-right col-span-1 ">
+                  <span className="text-blue-600 text-lg hidden lg:inline-block ">
                     {danhSachGheDangDat
                       .reduce((tongTien, ghe, index) => {
                         return (tongTien += ghe.giaVe);
@@ -269,25 +291,96 @@ function Menu(props) {
                   </span>
                 </div>
               </div>
-              <div className="my-5">
+              <div className=" hidden md:flex lg:hidden">
+                <div>
+                  <p className="text-red-500 font-bold text-xl" >Tổng tiền</p>
+                  <div>
+                    <span className="text-blue-600 text-lg">
+                      {danhSachGheDangDat
+                        .reduce((tongTien, ghe, index) => {
+                          return (tongTien += ghe.giaVe);
+                        }, 0)
+                        .toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="my-5 hidden md:block">
                 <i>Email</i>
                 <br />
                 {userLogin.email}
               </div>
-              <div className="my-5">
+              <div className="my-5 hidden md:block">
                 <i>Phone</i>
                 <br />
                 {userLogin.soDT}
               </div>
             </div>
-            <div style={{ height: "8%" }}>
+            <div>
               <button
                 onClick={handleDatVe}
-                className="bg-red-700 h-full text-white w-full text-center py-3 font-bold text-2xl cursor-pointer"
+                className="rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full text-white w-full text-center py-3 font-bold text-2xl cursor-pointer md:inline-block"
               >
                 Đặt vé
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="md:hidden mx-2 ">
+        <div className="  pt-5 flex justify-between  ">
+          <div className="w-1/2 ">
+            <span className="text-red-600 font-bold">Ghế: </span>
+            <div className="overflow-scroll w-full " >
+              {_.sortBy(danhSachGheDangDat, ["stt"]).map((gheDD, index) => {
+                return (
+                  <Fragment key={index}>
+                    <span className="text-green-500 text-xl mx-2">
+                      {gheDD.stt}
+                    </span>
+                  </Fragment>
+                );
+              })}
+            </div>
+            <hr />
+            <h3 className="text-xl hidden md:block">{thongTinPhim.tenPhim}</h3>
+            <p className="hidden md:block">Địa điểm: {thongTinPhim.diaChi}</p>
+            <p className="hidden md:block">
+              Ngày chiếu: {thongTinPhim.ngayChieu} {thongTinPhim.gioChieu}
+            </p>
+            <hr />
+            <div className=" flex-row my-5 flex overflow-scroll w-full">
+              <div className="w-3/5 ">
+                <span className="text-red-400 text-lg">Tổng tiền: </span>
+              </div>
+              <div className="w-2/5 text-right col-span-1">
+                <span className="text-green-800 text-lg">
+                  {danhSachGheDangDat
+                    .reduce((tongTien, ghe, index) => {
+                      return (tongTien += ghe.giaVe);
+                    }, 0)
+                    .toLocaleString()}
+                </span>
+              </div>
+            </div>
+            <div className="my-5 hidden md:block">
+              <i>Email</i>
+              <br />
+              {userLogin.email}
+            </div>
+            <div className="my-5 hidden md:block">
+              <i>Phone</i>
+              <br />
+              {userLogin.soDT}
+            </div>
+          </div>
+          <div className="w-1/2 text-center">
+            <button
+              onClick={handleDatVe}
+              className=" rounded bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 py-2 px-4 text-white  text-center  font-bold text-2xl cursor-pointer md:inline-block"
+            >
+              Đặt vé
+            </button>
           </div>
         </div>
       </div>
@@ -409,7 +502,7 @@ export default function Checkout(props) {
   // );
 
   return (
-    <div className="container p-5 border mx-auto">
+    <div className="container p-0 md:p-5 border mx-auto">
       <Tabs
         // tabBarExtraContent={operations}
         onChange={(key) => {

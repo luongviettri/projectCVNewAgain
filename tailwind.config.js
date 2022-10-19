@@ -15,7 +15,7 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
-      success:colors.green,
+      success: colors.green,
       black: colors.black,
       white: colors.white,
       gray: colors.coolGray,
@@ -63,6 +63,7 @@ module.exports = {
       72: '18rem',
       80: '20rem',
       96: '24rem',
+      999: '0.1875rem'
     },
     animation: {
       none: 'none',
@@ -200,6 +201,7 @@ module.exports = {
       ],
     },
     fontSize: {
+      xsss: ['0.5rem', { lineHeight: '1rem' }],
       xs: ['0.75rem', { lineHeight: '1rem' }],
       sm: ['0.875rem', { lineHeight: '1.25rem' }],
       base: ['1rem', { lineHeight: '1.5rem' }],
@@ -213,7 +215,8 @@ module.exports = {
       '7xl': ['4.5rem', { lineHeight: '1' }],
       '8xl': ['6rem', { lineHeight: '1' }],
       '9xl': ['8rem', { lineHeight: '1' }],
-      
+
+
     },
     fontWeight: {
       thin: '100',
@@ -861,5 +864,6 @@ module.exports = {
     wordBreak: ['responsive'],
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
+
   plugins: [],
 }
