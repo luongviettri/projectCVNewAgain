@@ -10,7 +10,7 @@ export default function TabletDetailFilmInfo({ filmDetail }) {
                 {filmDetail.moTa}
             </p>
             <div className="flex w-full justify-between">
-                <div className=" w-full md:w-2/3  ">
+                <div className=" w-full md:w-2/3  text-center">
                     <Rate allowHalf value={filmDetail.danhGia / 2} disabled />
                     <p className="text-3xl italic font-semibold text-gray-400 pt-5">
                         {moment(filmDetail.ngayKhoiChieu).format("DD.MM.YYYY")}
@@ -18,7 +18,7 @@ export default function TabletDetailFilmInfo({ filmDetail }) {
                 </div>
                 <div className=" w-0 hidden md:w-1/3 md:block">
                     <Progress
-                        width={100}
+                        width={80}
                         type="circle"
                         percent={`${filmDetail.danhGia * 10}`}
                         strokeColor={"rgba(185, 28, 28,1)"}

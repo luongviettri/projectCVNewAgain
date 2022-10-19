@@ -31,11 +31,13 @@ export default function Detail(props) {
       >
         <div className="md:m-5 m-0">
           <div className="flex">
-            <img
-              className="border-none rounded-lg hidden md:block"
-              src={filmDetail.hinhAnh}
-              alt="123"
-            />
+            <div>
+              <img
+                className="border-none rounded-lg hidden md:block"
+                src={filmDetail.hinhAnh}
+                alt="123"
+              />
+            </div>
             <div className="ml-5 overflow-hidden  hidden lg:block  ">
               <p className=" flex flex-col">
                 <h3 className="text-4xl font-bold text-red-700 uppercase">

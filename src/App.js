@@ -24,48 +24,57 @@ import CheckoutTemplate from "./templates/CheckoutTemplate/CheckoutTemplate";
 import User from "./pages/Admin/User/User";
 import AddUser from "./pages/Admin/User/AddUser/AddUser";
 import EditUser from "./pages/Admin/User/EditUser/EditUser";
+import { useMediaQuery } from 'react-responsive'
+import SmallerThanMobile from "./pages/SmallerThanMobile/SmallerThanMobile";
 // ! dùng lazy để thực hiện tăng UX---> chỉ áp dụng với html, API và hình ảnh sẽ có cách riêng
 // const CheckoutTemplate = lazy(() => import('./templates/CheckoutTemplate/CheckoutTemplate'));
 
 // ! history
 export const history = createBrowserHistory();
 function App() {
+  const isVerySmallScreen = useMediaQuery({ query: '(max-width: 354px)' })
   return (
-    <Router history={history}>
-      <Loading />
-      <Switch>
-        <HomeTemplate path="/home" exact Component={Home} />
-        <HomeTemplate path="/news" exact Component={News} />
-        <HomeTemplate path="/detail/:id" exact Component={Detail} />
-        <HomeTemplate path="/profile" exact Component={Profile} />
-        <UserTemplate path="/login" exact Component={Login} />
-        <UserTemplate path="/register" exact Component={Register} />
+    <>
+      {isVerySmallScreen ? <SmallerThanMobile /> :
+        <Router history={history}>
+          <Loading />
+          <Switch>
+            <HomeTemplate path="/home" exact Component={Home} />
+            <HomeTemplate path="/news" exact Component={News} />
+            <HomeTemplate path="/detail/:id" exact Component={Detail} />
+            <HomeTemplate path="/profile" exact Component={Profile} />
+            <UserTemplate path="/login" exact Component={Login} />
+            <UserTemplate path="/register" exact Component={Register} />
 
-        {/* <UserTemplate path="/admin" exact Component={Dashboard} /> */}
-        <AdminTemplate path="/admin" exact Component={Dashboard} />
-        <AdminTemplate path="/admin/users" exact Component={User} />
-        <AdminTemplate path="/admin/users/addnew" exact Component={AddUser} />
-        <AdminTemplate
-          path="/admin/users/edit/:account"
-          exact
-          Component={EditUser}
-        />
-        <AdminTemplate path="/admin/films" exact Component={Film} />
-        <AdminTemplate path="/admin/films/addnew" exact Component={AddNew} />
-        <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit} />
-        <AdminTemplate path="/admin/users" exact Component={Dashboard} />
-        <AdminTemplate
-          path="/admin/films/showtimes/:id"
-          exact
-          Component={Showtime}
-        />
-        <CheckoutTemplate path="/checkout/:id" exact Component={Checkout} />
+            {/* <UserTemplate path="/admin" exact Component={Dashboard} /> */}
+            <AdminTemplate path="/admin" exact Component={Dashboard} />
+            <AdminTemplate path="/admin/users" exact Component={User} />
+            <AdminTemplate path="/admin/users/addnew" exact Component={AddUser} />
+            <AdminTemplate
+              path="/admin/users/edit/:account"
+              exact
+              Component={EditUser}
+            />
+            <AdminTemplate path="/admin/films" exact Component={Film} />
+            <AdminTemplate path="/admin/films/addnew" exact Component={AddNew} />
+            <AdminTemplate path="/admin/films/edit/:id" exact Component={Edit} />
+            <AdminTemplate path="/admin/users" exact Component={Dashboard} />
+            <AdminTemplate
+              path="/admin/films/showtimes/:id"
+              exact
+              Component={Showtime}
+            />
+            <CheckoutTemplate path="/checkout/:id" exact Component={Checkout} />
 
-        <HomeTemplate path="/" exact Component={Home} />
-        {/* <Suspense fallback={<h1>LOADING...</h1>} > */}
-        {/* </Suspense> */}
-      </Switch>
-    </Router>
+            <HomeTemplate path="/" exact Component={Home} />
+            {/* <Suspense fallback={<h1>LOADING...</h1>} > */}
+            {/* </Suspense> */}
+          </Switch>
+        </Router>
+      }
+
+    </>
+
   );
 }
 
