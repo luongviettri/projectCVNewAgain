@@ -32,7 +32,7 @@ import SmallerThanMobile from "./pages/SmallerThanMobile/SmallerThanMobile";
 // ! history
 export const history = createBrowserHistory();
 function App() {
-  const isVerySmallScreen = useMediaQuery({ query: '(max-width: 354px)' })
+  const isVerySmallScreen = useMediaQuery({ query: '(max-width: 700px)' })
   return (
     <>
       {isVerySmallScreen ? <SmallerThanMobile /> :
